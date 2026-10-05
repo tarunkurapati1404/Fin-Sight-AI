@@ -1,0 +1,97 @@
+# ============================================
+# FIN-SIGHT AI - DOCKER COMPOSE
+# Spins up: PostgreSQL + RAG Application + MLflow
+# ============================================
+
+services:
+
+  # ============================================
+  # SERVICE 1: PostgreSQL Database (with pgvector)
+  # ============================================
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: finsight-db
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: your_password_here
+      POSTGRES_DB: finsight_db
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    restart: unless-stopped
+
+    networks:
+      - finsight-network
+
+
+  # ============================================
+  # SERVICE 2: RAG Application (Your Python Code)
+  # ============================================
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+
+    container_name: finsight-ai-app
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+    environment:
+      # Database connection (connects to 'db' service)
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: finsight_db
+      DB_USER: postgres
+      DB_PASSWORD: your_password_here
+
+      # OpenAI API Key (set via .env)
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-sk-your-key-here}
+
+      # MLflow tracking
+      MLFLOW_TRACKING_URI: ./mlruns
+
+    volumes:
+      - ../data:/app/data:rw
+      - ../mlruns:/app/mlruns:rw
+      - ../artifacts:/app/artifacts:rw
+
+    ports:
+      - "5000:5000"
+
+    stdin_open: true
+    tty: true
+
+    restart: unless-stopped
+
+    networks:
+      - finsight-network
+
+
+# ============================================
+# VOLUMES (Persistent Data)
+# ============================================
+volumes:
+  postgres_data:
+    driver: local
+
+
+# ============================================
+# NETWORKS
+# ============================================
+networks:
+  finsight-network:
+    external: true
+    name: fin_sight_ai_finsight-network

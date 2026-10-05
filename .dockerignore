@@ -1,0 +1,16 @@
+# Don't copy these to Docker image
+venv/
+__pycache__/
+*.pyc
+.git/
+.github/
+.mlruns/
+artifacts/
+*.db
+data/*.csv
+notebooks/
+tests/
+.env
+.DS_Store
+.vscode/
+*.md
