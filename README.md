@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img src="screenshots/05-rag-response.png" alt="RAG Response Demo" width="800"/>
+  <img src="screenshots/05_rag_pipeline.png" alt="RAG Response Demo" width="800"/>
 </p>
 
 ---
@@ -172,7 +172,7 @@ Fin_Sight_AI/
 │   ├── 02-database-schema.png
 │   ├── 03-data-loaded.png
 │   ├── 04-vector-search.png
-│   ├── 05-rag-response.png
+│   ├── 05_rag_pipeline.png
 │   ├── 06-mlflow-dashboard.png
 │   ├── 07-mlflow-runs.png
 │   ├── 08-docker-running.png
@@ -412,7 +412,7 @@ The application runs via Docker Compose with two primary services:
 
 5. **RAG Response — End-to-End**
 <p align="center">
-  <img src="screenshots/05-rag-response.png" alt="RAG Response" width="800"/>
+  <img src="screenshots/05_rag_pipeline.png" alt="RAG Response" width="800"/>
 </p>
 
 6. **MLflow Dashboard**
@@ -422,7 +422,7 @@ The application runs via Docker Compose with two primary services:
 
 7. **Docker Running**
 <p align="center">
-  <img src="screenshots/07-mlflow-runs.png" alt="Docker Running" width="800"/>
+  <img src="screenshots/07-mlflow-runs.png" alt="Docker Running" width="800"/>05_rag_pipeline
 </p>
 
 8. **Additional Project Screenshot**
