@@ -417,17 +417,17 @@ The application runs via Docker Compose with two primary services:
 
 6. **MLflow Dashboard**
 <p align="center">
-  <img src="screenshots/06-mlflow-dashboard.png" alt="MLflow Dashboard" width="800"/>
+  <img src="screenshots/06_mlflow_dashboard.png" alt="MLflow Dashboard" width="800"/>
 </p>
 
 7. **Docker Running**
 <p align="center">
-  <img src="screenshots/07-mlflow-runs.png" alt="Docker Running" width="800"/>05_rag_pipeline
+  <img src="screenshots/08-docker-running.png" alt="Docker Running" width="800"/>05_rag_pipeline
 </p>
 
 8. **Additional Project Screenshot**
 <p align="center">
-  <img src="screenshots/08-docker-running.png" alt="Additional Project Screenshot" width="800"/>
+  <img src="screenshots/07_mlflow_runs.png" alt="Additional Project Screenshot" width="800"/>
 </p>
 
 9. **Additional Project Screenshot**
